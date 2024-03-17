@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,101 +17,46 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         CreateMap();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     void CreateMap()
     {
+
+
+        for (int i = -mapsize + 1; i < mapsize; i++)
+        {
+            float xvalue = gaps * i * Mathf.Sqrt(3) / 2;
+            float zvalue = 0;
+            float jfloat = 0;
+
+            for (int j = -mapsize + 1; j < 2 * mapsize - 2 - Mathf.Abs(i); j++)
+            {
+                jfloat = j;
+                if (i % 2 == 0)
+                {
+                    zvalue = gaps * (jfloat - 0.5f);
+
+                }
+                else if (i % 2 == 1 || i % 2 == -1)
+                {
+                    zvalue = gaps * jfloat ;
+
+                }
+                Debug.Log("i=" + i + ", j=" + j);
+                Field.transform.position = new Vector3(xvalue, 0, zvalue);
+                Debug.Log("x=" + xvalue + ", z=" + zvalue);
+                Instantiate(Field, Field.transform.position,Field.transform.rotation);
+
+            }
+        }
         
-       if(mapsize>=1)
-        {
-            locationOfPlane=Vector3.zero;
-            InstantiateField();
-        }
-        if (mapsize >=2)
-        {
-            TransformCircle2();
-        }
-        if (mapsize >= 3)
-        {
-            TransformCircle3();
-        }
-
-
-    }
-    void TransformCircle2()
-    {
-        //1st node
-        locationOfPlane.x = 0;
-        locationOfPlane.z = gaps;
-        InstantiateField();
-
-        //2nd node
-        locationOfPlane.z = gaps / 2;
-        locationOfPlane.x = gaps * Mathf.Sqrt(3) / 2;
-        InstantiateField();
-
-        //3rd node
-        locationOfPlane.z = -gaps / 2;
-        InstantiateField();
-
-        //4th node
-        locationOfPlane.x = 0;
-        locationOfPlane.z = -gaps;
-        InstantiateField();
-
-        //5th node
-        locationOfPlane.z = -gaps / 2;
-        locationOfPlane.x = -gaps * Mathf.Sqrt(3)/2;
-        InstantiateField();
-
-        //6th node
-        locationOfPlane.z = gaps / 2;
-        InstantiateField();
-
-    }
-
-    void TransformCircle3()
-    {
-        //1st node
-        locationOfPlane.x = 0;
-        locationOfPlane.z = 2*gaps;
-        InstantiateField();
-
-        //2nd node
-        locationOfPlane.x = 2*gaps / 2;
-        locationOfPlane.z = 2 * gaps / Mathf.Sqrt(3);
-        InstantiateField();
-
-        //3rd node
-        locationOfPlane.x = -2*gaps / 2;
-        InstantiateField();
-
-        //4th node
-        locationOfPlane.x = 0;
-        locationOfPlane.z = -2*gaps;
-        InstantiateField();
-
-        //5th node
-        locationOfPlane.x = -2*gaps / 2;
-        locationOfPlane.z = -2*gaps / Mathf.Sqrt(3);
-        InstantiateField();
-
-        //6th node
-        locationOfPlane.x = -2*gaps / 2;
-        locationOfPlane.z = 2*gaps / Mathf.Sqrt(3);
-        InstantiateField();
-
-    }
-    void InstantiateField()
-    {
-        
-        Field.transform.position = locationOfPlane;
-        Instantiate(Field);
     }
 
 }
+

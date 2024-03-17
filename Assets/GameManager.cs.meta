@@ -3,7 +3,9 @@ guid: dbc87ef1afc3612438fe121004126cef
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Field: {instanceID: 0}
+  - Plane: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
