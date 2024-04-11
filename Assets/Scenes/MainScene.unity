@@ -404,7 +404,7 @@ Transform:
   m_GameObject: {fileID: 540724018}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8359576, y: -2.524767, z: -4.1375065}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -424,10 +424,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldTile: {fileID: 3157840213959016583, guid: 859d407498ad128488c94b102d036a92,
     type: 3}
-  mapSize: 80
+  mapSize: 30
   fieldPosition: {x: 0, y: 0, z: 0}
   mapAnchor: {fileID: 1710750099}
   gaps: 8
+  sandMaterial: {fileID: 2100000, guid: 3586bd73e54bc1544a12d834b268f5cc, type: 2}
+  shallowWaterMaterial: {fileID: 2100000, guid: df444a0b58d262245b765c2d44682b17,
+    type: 2}
+  grassMaterial: {fileID: 2100000, guid: ebb850ba0f670a2478371d77347ccc3c, type: 2}
+  dirtMaterial: {fileID: 2100000, guid: 674ceff40fa1f304ca6889ee080768c3, type: 2}
+  rockMaterial: {fileID: 2100000, guid: 07e184c0c510ac84ca29ca0bd6433ca3, type: 2}
+  deepWaterMaterial: {fileID: 2100000, guid: 734ba2c41d3d70b4c86a5cc55b02e096, type: 2}
 --- !u!1 &550127962
 GameObject:
   m_ObjectHideFlags: 0
