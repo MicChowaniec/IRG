@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Vector3 fieldPosition;
     public GameObject mapAnchor;
     public float gaps;
+    public List<GameObject> tiles;
 
     public Material sandMaterial;
     public Material shallowWaterMaterial;
@@ -19,6 +20,14 @@ public class GameManager : MonoBehaviour
     public Material rockMaterial;
     public Material deepWaterMaterial;
 
+    public struct Tile
+    {
+        int index;
+        GameObject tile;
+        string name;
+        // More properties.
+        
+    }
     private Material[] Materials = new Material[5] ;
     // Start is called before the first frame update
     void Start()
@@ -45,11 +54,53 @@ public class GameManager : MonoBehaviour
             
             for (int j = -mapSize + 1; j < (mapSize - Mathf.Abs(i)); j++)
             {
-                int rand = Random.Range(0, Materials.Length);
-                Debug.Log(rand);
+                int rand;
+                if (i == -1 && j==-1)
+                {
+                    rand = 2;
+                    //Debug.Log(i + " " + j + " " + rand);
+                }
+                else if (i == -1 && j == 0)
+                {
+                    rand = 2;
+                   // Debug.Log(i + " " + j + " " + rand);
+                }
+                else if (i == 0 && j == -1)
+                {
+                    rand = 2;
+                    //Debug.Log(i + " " + j + " " + rand);
+                }
+                else if (i == 0 && j == 0)
+                {
+                    rand = 2;
+                    //Debug.Log(i + " " + j + " " + rand);
+                }
+                else if (i == 0 && j == 1)
+                {
+                    rand = 2;
+                    //Debug.Log(i + " " + j + " " + rand);
+                }
+                else if (i == 1 && j == -1)
+                {
+                    rand = 2;
+                    //Debug.Log(i + " " + j + " " + rand);
+                }
+                else if (i ==1 && j == 0)
+                {
+                    rand = 2;
+                    //Debug.Log(i + " " + j + " " + rand);
+                }
+                else
+                {
+                    rand = Random.Range(0, Materials.Length);
+                    //Debug.Log(i+" "+j+" "+rand);
+                }
+               
                 fieldPosition = new Vector3(((float)i*Mathf.Sqrt(3)/2)*gaps, 0, ((float)j+Mathf.Abs((float)i)/2) * gaps);
                 GameObject newFieldTile = Instantiate(fieldTile, fieldPosition, Quaternion.identity, mapAnchor.transform);
                 newFieldTile.GetComponent<MeshRenderer>().material = Materials[rand];
+                tiles.Add(newFieldTile);
+
             }
         }
     }
