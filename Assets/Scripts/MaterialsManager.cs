@@ -11,6 +11,7 @@ public class MaterialsManager : MonoBehaviour
     public Material rockMaterial;
     public Material deepWaterMaterial;
     public Material[] Materials = new Material[5];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,7 @@ public class MaterialsManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wrong value, please enter value in range 0-5");
+            Debug.Log("Wrong value, please enter value in range 0-4");
             return null;
         }
         
